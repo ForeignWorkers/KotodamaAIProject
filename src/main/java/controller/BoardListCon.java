@@ -31,7 +31,7 @@ public class BoardListCon extends HttpServlet {
 		int postCount = 0;
 		
 		membersDAO mDAO = new membersDAO();
-		postCount = mDAO.getAllPostCount();
+//		postCount = mDAO.getAllPostCount();
 		
 		//한 페이지에 받아 올 최대 포스트 갯수
 		int pageSize = 10;
@@ -52,11 +52,11 @@ public class BoardListCon extends HttpServlet {
 		
 		number = postCount - (currentPage - 1) * pageSize;
 		
-		Vector<membersDTO> v = mDAO.getAllPost(startRow, endRow);
+//		Vector<membersDTO> v = mDAO.getAllPost(startRow, endRow);
 		
 		request.setAttribute("postCount", postCount);
 		request.setAttribute("msg", msg);
-		request.setAttribute("v", v);
+//		request.setAttribute("v", v);
 		request.setAttribute("pageSize", pageSize);
 		request.setAttribute("currentPage", currentPage);
 		request.setAttribute("number", number);
