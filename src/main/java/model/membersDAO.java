@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Vector;
+
 public class membersDAO extends SuperDAO{
     public void insertTable() {
         getCon();
@@ -96,4 +98,62 @@ public class membersDAO extends SuperDAO{
         }
         return false;
     } 
+    
+    //전체 포스트의 갯수를 반환하는데 쓸 메서드
+    public int getAllPostCount() {
+    	
+    	getCon();
+    	
+    	int count = 0;
+    	
+    	try {
+			
+    		String sql = "select count(*) from board";
+    		pstmt = conn.prepareStatement(sql);
+    		rs = pstmt.executeQuery();
+    		
+    		if(rs.next()) {
+    			count = rs.getInt(1);
+    		}
+    		conn.close();
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	return count;
+    }
+    
+    //전체 포스트를 리스트에 출력
+    public Vector<membersDTO> getAllPost(int startRow, int endRow){
+    	
+    	getCon();
+    	Vector<membersDTO> v = new Vector<membersDTO>();
+    	try {
+			//현재 페이지에 최신글 10개 가져오기.
+    		String sql = "select * from (select A.*, Rownum Rnum from (select * from board order by board_id desc) A) where Rnum>=? and Rnum<=?";
+    		
+    		pstmt = conn.prepareStatement(sql);
+    		pstmt.setInt(1, startRow);
+    		pstmt.setInt(2, endRow);
+    		rs = pstmt.executeQuery();
+    		
+			
+			  while(rs.next()) { membersDTO bean = new membersDTO();
+			  
+			  //불러온 목록의 게시글에 들어갈 내용물들.
+			  bean.setPostID(rs.getInt(1));
+			  bean.setPostSubject(rs.getString(2));
+			  bean.setNikname(rs.getString(3));
+			  bean.setViewcount(rs.getInt(4));
+			  bean.setLikecount(rs.getInt(5));
+			  
+			  v.add(bean);
+			  }
+    		conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	return v;
+    }
+    
 }
