@@ -1,12 +1,18 @@
 package model;
 
 public class membersDTO {
-    private String Id;          // 회원 고유 ID
+    private int userNum;		// 유저 고유 넘버 pk
+	private String Id;          // 회원 고유 id(이메일 형식)
     private String password;  // 비밀번호
     private String name;      // 회원 이름
     private String nikname;   // 닉네임 (UNIQUE)
-    
-    
+
+	public int getUserNum() {
+		return userNum;
+	}
+	public void setUserNum(int userNum) {
+		this.userNum = userNum;
+	}
 	public String getId() {
 		return Id;
 	}
