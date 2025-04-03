@@ -9,6 +9,6 @@
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
-<input type="button" value="목록보기" onclick="location.href='testCon.do'"/>&nbsp;
+<input type="button" value="목록보기" onclick="location.href='detailPageCon.do?boardId=1'"/>&nbsp;
 </body>
 </html>
