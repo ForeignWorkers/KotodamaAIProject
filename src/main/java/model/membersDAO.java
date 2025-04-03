@@ -1,6 +1,6 @@
 package model;
 
-public class testDAO extends SuperDAO{
+public class membersDAO extends SuperDAO{
     public void insertTable() {
         getCon();
         String sql = "INSERT INTO testmembers VALUES(?,?,?)";
@@ -36,7 +36,7 @@ public class testDAO extends SuperDAO{
     }
     
     //회원 추가
-    public void insertUser(testDTO user) {
+    public void insertUser(membersDTO user) {
         try {
             getCon();
             String sql = "insert into members (id, name, password, nikname) values (?, ?, ?, ?)";

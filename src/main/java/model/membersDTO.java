@@ -1,6 +1,6 @@
 package model;
 
-public class testDTO {
+public class membersDTO {
     private String Id;          // 회원 고유 ID
     private String password;  // 비밀번호
     private String name;      // 회원 이름
