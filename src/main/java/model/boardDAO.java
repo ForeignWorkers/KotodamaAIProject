@@ -19,7 +19,7 @@ public class boardDAO extends SuperDAO{
             pstmt.setString(3, board.getBoardWriteName());
             pstmt.setInt(4, board.getViewCount());
             pstmt.setInt(5, board.getLikeCount());
-            pstmt.setObject(6, UUID.fromString(board.getContentUUId()));  // UUID 처리
+            pstmt.setString(6, board.getContentUUId());
             pstmt.executeUpdate();
 
             conn.close();
@@ -29,18 +29,21 @@ public class boardDAO extends SuperDAO{
         }
     }
 
-    public boardDTO selectOneBoard(int id){
+    public boardDTO selectOneBoard(int id, boolean isCountView){
         getCon();
         boardDTO board = new boardDTO();
 
-        try {
-            String countsql = "UPDATE board set viewCount = viewCount+1 WHERE boardId = ?";
-            pstmt = conn.prepareStatement(countsql);
-            pstmt.setInt(1, id);
-            pstmt.executeUpdate();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
+        if(isCountView){
+            try {
+                String countsql = "UPDATE board set viewCount = viewCount+1 WHERE boardId = ?";
+                pstmt = conn.prepareStatement(countsql);
+                pstmt.setInt(1, id);
+                pstmt.executeUpdate();
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
 
         try{
@@ -143,5 +146,36 @@ public class boardDAO extends SuperDAO{
 		}
     	return v;
     }
-    
+
+    public void deleteBoard(int id){
+        getCon();
+        try {
+            String sql = "delete from board where boardId = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, id);
+            pstmt.executeUpdate();
+            conn.close();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int getBoardIdUseUUID(String uuid){
+        getCon();
+        int findId = 0;
+        try {
+            String sql = "select * from board where contentUUId = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, uuid);
+            rs = pstmt.executeQuery();
+            if(rs.next()) {
+                findId = rs.getInt("boardId");
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return findId;
+    }
 }

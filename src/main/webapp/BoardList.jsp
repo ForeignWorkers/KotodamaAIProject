@@ -128,8 +128,8 @@ button:hover {
 
  <!-- 사이드바 -->
     <div class="sidebar">
-        <button><img src="home-icon.png" alt="홈"></button>
-        <button><img src="menu-icon.png" alt="목록"></button>
+		<img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" onclick="location.href='MainPage.jsp'" alt="Home">
+		<img src="https://cdn-icons-png.flaticon.com/512/56/56763.png" onclick="location.href='BoardListCon.do'" alt="List">
     </div>
     
 	<div class="content">
@@ -140,7 +140,7 @@ button:hover {
 						<tr height="50" class="review-item">
 							<td width="50" align="center">${bean.boardId }</td><!-- 클릭시 넘어갈 보드 인포 -->
 							<td width = "500" align = "left">
-								<a href="detailPageCon.do?num=${bean.boardId }">
+								<a href="detailPageCon.do?boardId=${bean.boardId}&isCountView=${true}">
 								${bean.boardName }
 							</a>
 							</td>

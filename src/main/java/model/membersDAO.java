@@ -140,9 +140,9 @@ public class membersDAO extends SuperDAO{
                 user = new membersDTO();
                 user.setUserNum(rs.getInt("userNum"));
                 user.setId(rs.getString("userId"));
-                user.setPassword(rs.getString("userName"));
-                user.setName(rs.getString("userNikname"));
-                user.setNikname(rs.getString("password"));
+                user.setPassword(rs.getString("password"));
+                user.setName(rs.getString("userName"));
+                user.setNikname(rs.getString("userNikname"));          
             }
             conn.close();
             rs.close();
