@@ -149,7 +149,7 @@
 <body>
 
 <%
-  membersDTO member = (membersDTO) session.getAttribute("memberDTO");
+  membersDTO member = (membersDTO) session.getAttribute("userbean");
 
   String username =  null;
   int userNum = 0;

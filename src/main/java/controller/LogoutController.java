@@ -21,6 +21,8 @@ public class LogoutController extends HttpServlet {
     }
 
     protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+
         HttpSession session = request.getSession(false); // 기존 세션 가져오기 (없으면 null 반환)
         
         if (session != null) {
