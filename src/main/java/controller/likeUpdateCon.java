@@ -30,11 +30,8 @@ public class likeUpdateCon extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("boardId"));
         dao.increaseLikeCount(id);
-        dto = dao.selectOneBoard(id);
+        dto = dao.selectOneBoard(id,false);
 
-        request.setAttribute("board", dto);
-
-        RequestDispatcher view = request.getRequestDispatcher("detailPage.jsp");
-        view.forward(request, response);
+        response.sendRedirect("detailPageCon.do?boardId=" + dto.getBoardId() + "&isCountView=false");
     }
 }

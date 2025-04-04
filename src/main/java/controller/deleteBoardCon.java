@@ -27,7 +27,7 @@ public class deleteBoardCon extends HttpServlet {
         boardDAO boardDAO = new boardDAO();
         boardDAO.deleteBoard(Integer.parseInt(request.getParameter("boardId")));
 
-        RequestDispatcher view = request.getRequestDispatcher("BoardList.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("MainPage.jsp");
         view.forward(request, response);
     }
 }

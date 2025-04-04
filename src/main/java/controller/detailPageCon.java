@@ -32,9 +32,13 @@ public class detailPageCon extends HttpServlet {
         commentDAO commentDAO = new commentDAO();
         boardDTO dto = new boardDTO();
         Vector<commentDTO> commentDTOS = new Vector<>();
-        int findId = Integer.parseInt(request.getParameter("boardId"));
+        int findId =  Integer.parseInt(request.getParameter("boardId"));
+        System.out.println("ssss" + findId);
+        String isCountViewStr = request.getParameter("isCountView");
+        boolean isCountView = Boolean.parseBoolean(isCountViewStr);
+        System.out.println("boooll" + isCountView);
 
-        dto = dao.selectOneBoard(findId);
+        dto = dao.selectOneBoard(findId, isCountView);
         int count = 0;
         int commentCount = commentDAO.getCommentCount(findId);
         int pageSize = 10;

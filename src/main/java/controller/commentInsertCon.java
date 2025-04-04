@@ -34,17 +34,20 @@ public class commentInsertCon extends HttpServlet {
         String comment = request.getParameter("comment");
         String userName = request.getParameter("userName");
         int userNum = Integer.parseInt(request.getParameter("userNum"));
-        int boardId = Integer.parseInt(request.getParameter("boardId"));
+
+        String boardIdStr = request.getParameter("boardId"); // ✅ 올바른 방식
+        int boardId = Integer.parseInt(boardIdStr);
+
         commentDAO commentDAO = new commentDAO();
         commentDAO.insertComment(comment,userNum,userName,boardId);
 
         commentDTOS = commentDAO.getComments(boardId);
-        boardDTO dto = dao.selectOneBoard(boardId);
+        boardDTO dto = dao.selectOneBoard(boardId, false);
 
         request.setAttribute("board", dto);
-        request.setAttribute("comments", commentDTOS);
+        request.setAttribute("boardId", dto.getBoardId());
+        request.setAttribute("isCountView", false);
 
-        RequestDispatcher view = request.getRequestDispatcher("detailPageCon.do");
-        view.forward(request, response);
+        response.sendRedirect("detailPageCon.do?boardId=" + boardId + "&isCountView=false");
     }
 }

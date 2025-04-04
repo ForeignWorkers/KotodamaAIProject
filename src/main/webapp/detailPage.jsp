@@ -166,7 +166,7 @@
 %>
 
 <div class="sidebar">
-  <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" onclick="location.href=''" alt="Home">
+  <img src="https://cdn-icons-png.flaticon.com/512/25/25694.png" onclick="location.href='MainPage.jsp'" alt="Home">
   <img src="https://cdn-icons-png.flaticon.com/512/56/56763.png" onclick="location.href='BoardListCon.do'" alt="List">
 </div>
 

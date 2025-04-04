@@ -108,7 +108,7 @@ body {
         			</button>
     			</span>
 			</form>
-  		<div class="list_button">목록</div>
+		<button class="list_button" onclick="location.href='BoardListCon.do'">목록</button>
 	</div>
 </body>
 </html>
