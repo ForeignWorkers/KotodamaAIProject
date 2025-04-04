@@ -143,5 +143,17 @@ public class boardDAO extends SuperDAO{
 		}
     	return v;
     }
-    
+
+    public void deleteBoard(int id){
+        getCon();
+        try {
+            String sql = "delete from board where boardId = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, id);
+            pstmt.executeUpdate();
+            conn.close();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
