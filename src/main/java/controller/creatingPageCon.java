@@ -86,7 +86,7 @@ public class creatingPageCon extends HttpServlet {
 
 			// 기존 세션 확인 (세션이 없으면 null 반환)
 			HttpSession session = request.getSession(false);
-			membersDTO member = (membersDTO) session.getAttribute("memberDTO");
+			membersDTO member = (membersDTO) session.getAttribute("userbean");
 
 			dto.setBoardName(request.getParameter("Text"));
 			dto.setBoardWriteId(member.getUserNum());
