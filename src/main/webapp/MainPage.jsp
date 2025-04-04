@@ -26,15 +26,15 @@ body {
 
 .login_button {
 	width: 280px;
-	height: 49px;
+	height: 45px;
 	background: white;
 	border-radius: 20px;
 	text-align: center;
-	font-size: 33px; /* 글자 크기 */
+	font-size: 27px; /* 글자 크기 */
 	color: #66b3ff;
 	border: 2px solid #ccc;
 	position: absolute;
-	top: 20px; /* 화면 위쪽에서 20px 아래 */
+	top: 22px; /* 화면 위쪽에서 20px 아래 */
 	right: 50px;
 }
 
@@ -56,7 +56,7 @@ body {
 	width: 650px; /* 가로 크기 */
 	height: 30px; /* 세로 크기 */
 	padding: 10px;
-	font-size: 30px;
+	font-size: 25px;
 	border: 2px solid #ccc; /* 테두리 */
 	border-radius: 20px; /* 끝을 둥글게 */
 	outline: none; /* 클릭했을 때 테두리 제거 */
@@ -89,7 +89,7 @@ body {
 	background: white;
 	border-radius: 20px;
 	text-align: center;
-	font-size: 33px; /* 글자 크기 */
+	font-size: 28px; /* 글자 크기 */
 	color: #66b3ff;
 	margin-top: 200px;
 	border: 2px solid #ccc;
@@ -117,7 +117,7 @@ body {
 
 		<c:choose>
 			<c:when test="${sessionScope.loginStatus eq 'login'}">
-				<form action="creatingPageCon.do" method="post">
+				<form action="loadingPage.jsp" method="post">
 					<span class="search_wrapper"> <input type="text"
 						class="search_box" name="Text" placeholder="검색어를 입력하세요">
 						<button type="submit"
