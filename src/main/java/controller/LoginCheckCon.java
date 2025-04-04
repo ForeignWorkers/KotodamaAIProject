@@ -25,6 +25,8 @@ public class LoginCheckCon extends HttpServlet {
 	}
 
 	protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+
 				// 기존 세션 확인 (세션이 없으면 null 반환)
 				HttpSession session = request.getSession(false); 
 

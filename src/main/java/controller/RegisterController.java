@@ -26,6 +26,7 @@ public class RegisterController extends HttpServlet {
 	}
 	
 	protected void reqPro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 
 		//register.jsp의 input name값을 가져옴
 		String id = request.getParameter("id");

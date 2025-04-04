@@ -27,6 +27,8 @@ public class LoginController extends HttpServlet {
 
     protected void reqPro(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        request.setCharacterEncoding("UTF-8");
     	
         String id = request.getParameter("id");
         String password = request.getParameter("password");
