@@ -58,6 +58,7 @@ public class RegisterController extends HttpServlet {
 
         //에러메세지가 들어오면 jsp에 전달
         if (errorMessage != null) {
+        	//화면 초기화 방지
         	setRequestAttributes(request,id,password,passwordConfirm,name,nikname);
             request.setAttribute("errorMessage", errorMessage);
             request.getRequestDispatcher("register.jsp").forward(request, response);

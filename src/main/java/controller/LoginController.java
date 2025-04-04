@@ -50,7 +50,8 @@ public class LoginController extends HttpServlet {
         	// 세션 유지시간 설정 1800초
         	session.setMaxInactiveInterval(1800);
         	
-        	response.sendRedirect("LoginCheckCon");  // 로그인 성공 후 메인 페이지로 이동
+        	// 로그인 성공 후 LoginCheckCon으로
+        	request.getRequestDispatcher("LoginCheckCon").forward(request, response);  
         } else {
             request.setAttribute("errorMessage", "아이디 또는 비밀번호가 잘못되었습니다.");
             request.getRequestDispatcher("login.jsp").forward(request, response);

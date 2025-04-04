@@ -29,19 +29,22 @@ public class LoginCheckCon extends HttpServlet {
 				HttpSession session = request.getSession(false); 
 
 		        if (session != null && session.getAttribute("userbean") != null) { // 세션이 존재하고, userbean이 있으면
-		            membersDTO user = (membersDTO) session.getAttribute("userbean");
+		        	membersDTO user = (membersDTO) session.getAttribute("userbean");
 
-		            // 로그인 상태 정보 설정 (JSP에서 JSTL로 확인 가능하게)
-		            request.setAttribute("loginStatus", "logged_in");
-		            request.setAttribute("userNikname", user.getNikname());
+		            // 세션에 저장하기 (session.setAttribute)
+		            session.setAttribute("loginStatus", "login");
+		            session.setAttribute("userNikname", user.getNikname());
 		        } else {
 		            // 로그인이 안 된 경우
-		            request.setAttribute("loginStatus", "not_logged_in");
+		        	if (session != null) {
+		        		session.setAttribute("loginStatus", "not_login");
+					}
 		        }
-		        // main.jsp 로 요청 전달
-		        request.getRequestDispatcher("MainPage.jsp").forward(request, response);
-		      
+		        
+		        response.sendRedirect("MainPage.jsp"); // 리다이렉트로 이동
+		        //request.getRequestDispatcher("MainPage.jsp").forward(request, response);
+   
 	}
-		}
+}
 	
 
