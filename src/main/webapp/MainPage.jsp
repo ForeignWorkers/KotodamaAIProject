@@ -117,7 +117,7 @@ body {
 
 		<c:choose>
 			<c:when test="${sessionScope.loginStatus eq 'login'}">
-				<form action="creatingPageCon.do" method="post">
+				<form action="loadingPage.jsp" method="post">
 					<span class="search_wrapper"> <input type="text"
 						class="search_box" name="Text" placeholder="검색어를 입력하세요">
 						<button type="submit"
