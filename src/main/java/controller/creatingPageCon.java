@@ -51,7 +51,7 @@ public class creatingPageCon extends HttpServlet {
 			conn.setDoOutput(true); //setDoOutput(true)는 "내가 POST 방식으로 본문(body)에 데이터를 보낼 거야!
 
 			// JSON Body 데이터 설정
-			String jsonInputString = "{ \"prompt\": \"" + request.getParameter("Text") + "\" }"; //사용자가 보낸 Textt파라미터를 json데이터로 변환 ex){ "prompt": "안녕" }
+			String jsonInputString = "{ \"prompt\": \"" + request.getParameter("Text")+ " Music\" }"; //사용자가 보낸 Textt파라미터를 json데이터로 변환 ex){ "prompt": "안녕" }
 
 			// OutputStream을 이용해 JSON 데이터 전송
 			try (OutputStream os = conn.getOutputStream()) { //OutputStream 데이터를 어디론가 보내주는 통로 그 뒤는 데이터를 보내는 Out어쩌구를 열어줌
